@@ -10,7 +10,13 @@ if(req.url === '/'){
         res.end(content)
     })    
 }
-
+if(req.url === '/api/movies'){
+    fs.readFile(path.join(__dirname, 'reference','movie.json'),(err, content) => {
+        if (err) throw err 
+        res.writeHead(200, {'Content-Type':'application/json'})
+        res.end(content)
+    })    
+}
 })
 
 const PORT = process.env.PORT || 5000
